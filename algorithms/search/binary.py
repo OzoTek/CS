@@ -2,7 +2,8 @@
 
 import math
 
-def s(arr, n, lo, hi):
+
+def rec_search(arr, n, lo, hi):
     if len(arr) == 0 or lo > hi:
         return -1
     low = 0 if lo == None else lo
@@ -11,12 +12,14 @@ def s(arr, n, lo, hi):
     if n == arr[idx]:
         return idx
     elif n > arr[idx]:
-        return s(arr, n, idx + 1, high)
+        return rec_search(arr, n, idx + 1, high)
     else:
-        return s(arr, n, low, idx - 1)
+        return rec_search(arr, n, low, idx - 1)
+
 
 def search(arr, n):
-    return s(arr, n, 0, len(arr) - 1)
+    return rec_search(arr, n, 0, len(arr) - 1)
+
 
 n = 2
 arr = list([-1000, 1, 2, 3, 4, 5, 1000])
